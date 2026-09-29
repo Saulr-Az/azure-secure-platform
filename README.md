@@ -105,11 +105,11 @@ GitHub
 GitHub Actions
 Project Roadmap
 
-Terraform project structure
+Terraform project structure DONE
 
-Resource Group module
+Resource Group module DONE
 
-Development environment
+Development environment DONE
 
 Azure Virtual Network
 

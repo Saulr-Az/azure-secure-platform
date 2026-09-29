@@ -1,0 +1,32 @@
+#Aqui indicaremos los archivos que queremos que no copie 
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+
+# Terraform variables
+*.tfvars
+*.tfvars.json
+#Esta excepcion deliverada es porque si queremos poder subir ekemplos de configuracion pero sin secretos
+!*.tfvars.example
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Terraform lock file
+# Keep .terraform.lock.hcl committed

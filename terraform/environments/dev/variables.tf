@@ -16,3 +16,10 @@ variable "project_name" {
   type        = string
   default     = "azportfolio"
 }
+
+variable "priority" {
+  description = "Prioridad de la regla"
+  type        = number
+  default     = "100"
+
+}

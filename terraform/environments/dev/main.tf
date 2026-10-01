@@ -6,7 +6,7 @@ locals {
     purpose     = "portfolio"
   }
 }
-
+#MODULO GRUPO DE RECURSOS
 module "resource_group" {
   #Coje la informacion dentro de la siguiente dirrecion 
   source = "../../modules/resource-group"
@@ -17,6 +17,7 @@ module "resource_group" {
   tags = local.common_tags
 }
 
+#MODULO NETWORKING VNET Y SUBNETS
 module "networking" {
   #Coje la informacion dentro de la siguiente dirrecion 
   source = "../../modules/networking"
@@ -45,4 +46,16 @@ module "networking" {
   tags = local.common_tags
 }
 
+#MODULO NSG
+module "network_security_group" {
+  source = "../../modules/network-security-group/"
 
+  name                = "${var.project_name}-${var.environment}-nsg"
+  location            = var.location
+  resource_group_name = module.resource_group.name
+  priority            = var.priority
+  tags                = local.common_tags
+
+
+
+}

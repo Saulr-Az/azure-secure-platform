@@ -21,16 +21,16 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
- 
- variable "subnets" {
-    description ="Aqui definiremos las subredes que se crearan en la vnet"
 
-    type = map(object({
+variable "subnets" {
+  description = "Aqui definiremos las subredes que se crearan en la vnet"
 
-        address_prefixes =list(string)
+  type = map(object({
 
-    }))
-   
-   
+    address_prefixes = list(string)
 
- }
+  }))
+
+
+
+}

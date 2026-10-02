@@ -1,29 +1,27 @@
 Azure Secure Platform
 
-Terraform-based Azure infrastructure project designed to demonstrate practical Azure administration, infrastructure as code, security, networking, identity, monitoring, and automation skills aligned with the AZ-104 Azure Administrator role.
+Infraestructura montada en Terraform  montada
 
-Project Status
+Estado del projecto
 
-🚧 In progress
+EN PROGRESO
 
-The platform is being built incrementally using Terraform and Azure best practices.
+Practicando contruyendo la plantaforma incremnetalmente usando Terraform y Azure.
 
-Objectives
+Objetivos a demostrar:
+Creacion y Configuracion de recursos
+Architectura Terraform
+Identidad y RBAC
+Monitorage
+Automatizacion de la Arquitectura
+Seguridad y control de acceso
+Implementacion con Github
 
-This project aims to demonstrate:
 
-Azure infrastructure deployment with Terraform
-Modular Terraform architecture
-Environment separation (dev / prod)
-Azure networking and network segmentation
-Security and access control
-Identity and RBAC
-Storage and data protection
-Monitoring and observability
-Infrastructure automation
-CI/CD with GitHub Actions
-Terraform state management
-Repository Structure
+
+
+
+Architectura actual:
 azure-secure-platform/
 │
 ├── README.md
@@ -40,70 +38,9 @@ azure-secure-platform/
 │       └── prod/
 │
 └── scripts/
-Terraform Architecture
 
-The project separates reusable infrastructure modules from environment-specific configuration.
+PROGRESO ACTUAL:
 
-Modules
-
-The terraform/modules/ directory contains reusable Terraform modules.
-
-For example:
-
-terraform/modules/resource-group/
-├── main.tf
-├── variables.tf
-└── outputs.tf
-Environments
-
-The terraform/environments/ directory contains the configuration for each environment.
-
-terraform/environments/
-├── dev/
-└── prod/
-
-Each environment can use the same Terraform modules with different configuration.
-
-Current Implementation
-
-The first implemented component is an Azure Resource Group deployed through a reusable Terraform module.
-
-Current flow:
-
-Environment
-    ↓
-Terraform Module
-    ↓
-Azure Resource Group
-
-The development environment currently creates:
-
-azportfolio-dev-rg
-
-in the West Europe Azure region.
-
-Terraform State
-
-Terraform state is intentionally excluded from this repository.
-
-The local state file:
-
-terraform.tfstate
-
-is used by Terraform to track the relationship between the Terraform configuration and the infrastructure it manages.
-
-For a production-oriented implementation, the project will use remote Terraform state stored in Azure Storage.
-
-Technologies
-Microsoft Azure
-Terraform
-AzureRM Terraform Provider
-PowerShell
-Azure CLI
-Git
-GitHub
-GitHub Actions
-Project Roadmap
 
 Terraform project structure DONE
 
@@ -111,11 +48,11 @@ Resource Group module DONE
 
 Development environment DONE
 
-Azure Virtual Network
+Azure Virtual Network DONE 
 
-Subnets
+Subnets DONE
 
-Network Security Groups
+Network Security Groups DONE
 
 Route tables
 

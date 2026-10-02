@@ -17,10 +17,6 @@ Automatizacion de la Arquitectura
 Seguridad y control de acceso
 Implementacion con Github
 
-
-
-
-
 Architectura actual:
 azure-secure-platform/
 │

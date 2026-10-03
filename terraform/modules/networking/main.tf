@@ -23,3 +23,14 @@ resource "azurerm_subnet" "this" {
   address_prefixes     = each.value.address_prefixes
 
 }
+
+#Asociacion del NSG con las subredes
+
+resource "azurerm_subnet_network_security_group_association" "this" {
+
+  for_each = var.subnets
+  subnet_id = azurerm_subnet.this[each.key].id
+  network_security_group_id = var.network_security_group_id
+ 
+
+}

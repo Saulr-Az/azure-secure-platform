@@ -44,18 +44,23 @@ module "networking" {
   }
 
   tags = local.common_tags
+
+  network_security_group_id = module.network_security_group.network_security_group_id
 }
 
 #MODULO NSG
 module "network_security_group" {
   source = "../../modules/network-security-group/"
 
-  name                = "${var.project_name}-${var.environment}-nsg"
-  location            = var.location
-  resource_group_name = module.resource_group.name
-  priority            = var.priority
-  tags                = local.common_tags
-
+  name                      = "${var.project_name}-${var.environment}-nsg"
+  location                  = var.location
+  resource_group_name       = module.resource_group.name
+  priority                  = var.priority
+  tags                      = local.common_tags
+  network_security_group_id = module.network_security_group.network_security_group_id
 
 
 }
+
+
+

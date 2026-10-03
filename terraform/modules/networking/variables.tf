@@ -34,3 +34,8 @@ variable "subnets" {
 
 
 }
+
+variable "network_security_group_id" {
+  description = "ID del Network Security Group"
+  type        = string
+}

@@ -38,31 +38,25 @@ azure-secure-platform/
 PROGRESO ACTUAL:
 
 
-Terraform project structure DONE
+Estructura del projecto Terraform  DONE
 
-Resource Group module DONE
+Modulo RG DONE
 
-Development environment DONE
+Desarollo del entorno DONE
 
-Azure Virtual Network DONE 
+VNET DONE 
 
-Subnets DONE
+Subredes DONE
 
-Network Security Groups DONE
+NSG  DONE
 
-Route tables
+Asociaciacion NSG DONE
 
-Storage
+Azure Storage
 
 Key Vault
 
 Managed Identity
-
-Compute
-
-Private Endpoints
-
-Private DNS
 
 Azure Monitor / Log Analytics
 

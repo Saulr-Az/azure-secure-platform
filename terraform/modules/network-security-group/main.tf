@@ -1,3 +1,4 @@
+#Crearemos el recurso NSG 
 resource "azurerm_network_security_group" "this" {
   name                = var.name
   location            = var.location
@@ -5,8 +6,9 @@ resource "azurerm_network_security_group" "this" {
   tags                = var.tags
 }
 
+#Crearemos la regla NSG que permite que el trafico entrante por el puerto de HTTPS
 resource "azurerm_network_security_rule" "this" {
-  name                        = "Permitir-HTTPS-Inbound"
+  name                        = "Permitir-HTTPS-Entrante"
   priority                    = var.priority
   direction                   = "Inbound"
   access                      = "Allow"

@@ -1,4 +1,5 @@
-#Creamos los bloques para las variables
+#Creamos las variables para la vnet y las subredes
+
 
 variable "name" {
   description = "nombre de la vnet"
@@ -22,6 +23,7 @@ variable "tags" {
   default     = {}
 }
 
+#Variable para crear subredes por cada valor añadido a la lista en environments/dev/main.tf
 variable "subnets" {
   description = "Aqui definiremos las subredes que se crearan en la vnet"
 
@@ -31,10 +33,9 @@ variable "subnets" {
 
   }))
 
-
-
 }
 
+#variable para el identificador del ID lo usaremos para sacar el identificador de nsg
 variable "network_security_group_id" {
   description = "ID del Network Security Group"
   type        = string

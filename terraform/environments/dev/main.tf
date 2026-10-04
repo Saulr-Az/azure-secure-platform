@@ -1,3 +1,4 @@
+#Con locals estamos creando la lista de etiquetas que se asignaran cuando se cree un recurso.Por ahora esta solo la lista common_tags,a medida que vayamos puliendo el projecto añadiremos mas listas. 
 locals {
   common_tags = {
     project     = var.project_name
@@ -45,6 +46,7 @@ module "networking" {
 
   tags = local.common_tags
 
+# Le indicamos el id del nsg que se le asignara
   network_security_group_id = module.network_security_group.network_security_group_id
 }
 
@@ -58,7 +60,6 @@ module "network_security_group" {
   priority                  = var.priority
   tags                      = local.common_tags
   network_security_group_id = module.network_security_group.network_security_group_id
-
 
 }
 

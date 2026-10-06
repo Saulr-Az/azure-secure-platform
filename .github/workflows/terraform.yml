@@ -1,0 +1,52 @@
+name: Action revision despliegue terraform
+
+on:
+  push:
+  branches:
+  - main 
+
+  pull_request
+
+jobs:
+  terraform:
+  #Usa una maquina ubuntu para que haga las tareas de revision
+    runs-on: ubutu-latest
+
+    steps:
+    #Descarga los datos a la maquina
+      -name: Checkout
+      uses: actions/checkout@v4
+
+    #Las tareas que realizara
+    -name: Azure Login
+    uses: azure
+
+
+
+    -name: Azure Login
+    uses: azure/login@v2
+
+    with:
+
+      client-id:${{ secrets.AZURE_CLIENT_ID }}
+      tenant-id:${{ secrets.AZURE_TENANT_ID }}
+      subscription-id:${{
+secrets.AZURE_SUBSCRIPTION_ID }}
+
+    -name: Setup Terraform
+     uses: hashicorp/setup-terraform@v3
+
+#Aqui lanzara las tareas de testeo de terraform para que solo haga falta lanzar el terraform apply
+-name: Terraform Init
+run: terraform init
+
+-name: Terraform Format
+run: terraform fmt-check
+
+-name: Terraform Validate
+
+run: terraform validate
+
+-name: Terraform Plan
+
+run: terraform plan

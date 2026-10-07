@@ -25,7 +25,3 @@ variable "tags" {
 }
 
 
-variable "network_security_group_id" {
-  description = "identificador del nsg para asociarlo a las subnets"
-  type = string
-}

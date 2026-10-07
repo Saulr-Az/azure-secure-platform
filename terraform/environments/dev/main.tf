@@ -46,7 +46,7 @@ module "networking" {
 
   tags = local.common_tags
 
-# Le indicamos el id del nsg que se le asignara
+  # Le indicamos el id del nsg que se le asignara
   network_security_group_id = module.network_security_group.network_security_group_id
 }
 
@@ -54,14 +54,30 @@ module "networking" {
 module "network_security_group" {
   source = "../../modules/network-security-group/"
 
-  name                      = "${var.project_name}-${var.environment}-nsg"
-  location                  = var.location
-  resource_group_name       = module.resource_group.name
-  priority                  = var.priority
-  tags                      = local.common_tags
-  network_security_group_id = module.network_security_group.network_security_group_id
+  name                = "${var.project_name}-${var.environment}-nsg"
+  location            = var.location
+  resource_group_name = module.resource_group.name
+  priority            = var.priority
+  tags                = local.common_tags
+
 
 }
 
+#MODULO NIC
+module "network_interface" {
+  source = "../../modules/network-interface"
 
+  name                = "${var.project_name}-${var.environment}-nic"
+  location            = var.location
+  resource_group_name = module.resource_group.name
+  tags                = local.common_tags
+  #En caso que queramos poner la ip estatica cambiar el valor de private_ip_address_allocation y descomentar la linea private_ip_address
+  private_ip_address_allocation = "Dynamic"
+  #private_ip_address = "10.10.1.6"
+
+  subnet_id = module.networking.azurerm_subnet_id["app"]
+
+
+
+}
 

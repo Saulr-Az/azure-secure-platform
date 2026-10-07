@@ -52,6 +52,8 @@ NSG  DONE
 
 Asociaciacion NSG DONE
 
+NIC DONE
+
 Azure Storage
 
 Key Vault

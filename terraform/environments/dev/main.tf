@@ -81,3 +81,18 @@ module "network_interface" {
 
 }
 
+#Modulo vm
+module "virtual_machine" {
+  source = "../../modules/virtual-machine"
+
+  name                  = "${var.project_name}-vm"
+  location              = var.location
+  resource_group_name   = module.resource_group.name
+  tags                  = local.common_tags
+  size                  = "Standard_B1s"
+  admin_username        = "AzureSr"
+  admin_password        = var.admin_password
+  network_interface_ids = module.network_interface.network_interface_ids
+
+
+}

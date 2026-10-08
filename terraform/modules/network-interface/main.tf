@@ -1,7 +1,7 @@
 resource "azurerm_network_interface" "this" {
-  name     = var.name
-  location = var.location
-  tags     = var.tags
+  name                = var.name
+  location            = var.location
+  tags                = var.tags
   resource_group_name = var.resource_group_name
 
   ip_configuration {

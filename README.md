@@ -1,12 +1,12 @@
 Azure Secure Platform
 
-Infraestructura montada en Terraform  montada
+Infraestructura montada en Terraform  
 
 Estado del projecto
 
 EN PROGRESO
 
-Practicando contruyendo la plantaforma incremnetalmente usando Terraform y Azure.
+Construyendo la plataforma incrementalmente usando Terraform y Azure.
 
 Objetivos a demostrar:
 Creacion y Configuracion de recursos
@@ -14,26 +14,7 @@ Architectura Terraform
 Identidad y RBAC
 Monitorage
 Automatizacion de la Arquitectura
-Seguridad y control de acceso
 Implementacion con Github
-
-Architectura actual:
-azure-secure-platform/
-│
-├── README.md
-├── .gitignore
-│
-├── docs/
-│
-├── terraform/
-│   ├── modules/
-│   │   └── resource-group/
-│   │
-│   └── environments/
-│       ├── dev/
-│       └── prod/
-│
-└── scripts/
 
 PROGRESO ACTUAL:
 
@@ -54,7 +35,7 @@ Asociaciacion NSG DONE
 
 NIC DONE
 
-Azure Storage
+Azure Storage IN PROGRESS
 
 Key Vault
 
@@ -72,7 +53,7 @@ Remote Terraform state
 
 GitHub Actions CI/CD
 
-Architecture documentation
+Architecture documentation IN PROGRESS
 
 Security documentation
 

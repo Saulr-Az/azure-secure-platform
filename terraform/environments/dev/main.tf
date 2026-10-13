@@ -75,7 +75,7 @@ module "network_interface" {
   private_ip_address_allocation = "Dynamic"
   #private_ip_address = "10.10.1.6"
 
-  subnet_id = module.networking.azurerm_subnet_id["app"]
+  subnet_id = module.networking.subnet_id["app"]
 
 
 
@@ -93,6 +93,22 @@ module "virtual_machine" {
   admin_username        = "AzureSr"
   admin_password        = var.admin_password
   network_interface_ids = module.network_interface.network_interface_ids
+
+
+}
+
+#Modulo Cuenta de almacenamiento
+
+module "storage_account" {
+  source = "../../modules/storage-account"
+
+  name                     = "st01"
+  location                 = var.location
+  resource_group_name      = module.resource_group.name
+  account_tier             = var.account_tier
+  account_replication_type = var.account_replication_type
+  min_tls_version          = "TLS1_2"
+  tags                     = local.common_tags
 
 
 }

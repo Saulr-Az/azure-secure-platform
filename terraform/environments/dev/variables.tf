@@ -34,3 +34,16 @@ variable "admin_password" {
   type        = string
   sensitive   = true
 }
+
+variable "account_tier" {
+  description = "Tier de la cuenta "
+  type        = string
+  default     = "Standard"
+
+}
+
+variable "account_replication_type" {
+  description = "Tipo de replicacion"
+  type        = string
+  default     = "LRS"
+}

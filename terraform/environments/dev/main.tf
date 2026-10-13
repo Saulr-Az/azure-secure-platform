@@ -112,3 +112,15 @@ module "storage_account" {
 
 
 }
+
+#Modulo Contenedor de almacenamiento
+
+module "storage_container" {
+  source = "../../modules/storage-container"
+
+  name               = "container01"
+  storage_account_id = module.storage_account.storage_account_id
+
+
+}
+

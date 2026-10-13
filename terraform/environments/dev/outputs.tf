@@ -12,3 +12,9 @@ output "storage_account_name" {
   value       = module.storage_account.storage_account_name
 
 }
+
+output "storage_container_id" {
+  description = "identificador del contenedor"
+  value       = module.storage_container.storage_container_id
+
+}

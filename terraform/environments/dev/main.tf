@@ -89,7 +89,7 @@ module "virtual_machine" {
   location              = var.location
   resource_group_name   = module.resource_group.name
   tags                  = local.common_tags
-  size                  = "Standard_B1s"
+  size                  = "Standard_D2s_v3"
   admin_username        = "AzureSr"
   admin_password        = var.admin_password
   network_interface_ids = module.network_interface.network_interface_ids
@@ -102,7 +102,7 @@ module "virtual_machine" {
 module "storage_account" {
   source = "../../modules/storage-account"
 
-  name                     = "st01"
+  name                     = "azportfoliost01saulr"
   location                 = var.location
   resource_group_name      = module.resource_group.name
   account_tier             = var.account_tier

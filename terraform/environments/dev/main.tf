@@ -124,3 +124,10 @@ module "storage_container" {
 
 }
 
+#Modulo de asignacion de la identidad
+
+module "rbac" {
+  source       = "../../modules/rbac"
+  scope        = module.storage_container.storage_container_id
+  principal_id = module.virtual_machine.identity_id_vm
+}

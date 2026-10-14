@@ -27,4 +27,10 @@ resource "azurerm_windows_virtual_machine" "this" {
     version   = "latest"
   }
 
+  #Identidad para RBAC
+  identity {
+    type = "SystemAssigned"
+  }
+
+
 }

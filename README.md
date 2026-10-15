@@ -1,6 +1,6 @@
 **Azure Secure Platform**
 
-Infraestructura montada en Terraform  conc ontroles basdos en identidad y test de validacion a traves de Github Actions
+Infraestructura montada en Terraform  con una arquitectura modular, controles basados en identidad y test de validacion a traves de Github Actions
 
 Estado del projecto
 

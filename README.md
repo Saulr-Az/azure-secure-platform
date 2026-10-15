@@ -130,19 +130,32 @@ A traves de RBAC le indicamos que la azportfolio-vm tiene el rol de Storage Blob
 ****ESTRUCTURA PRINCIPAL****
 
 terraform/
+
 ├── .github/
+
 │   └──/workflows
+
 ├── environments/
+
 │   └── dev/
+
 └── modules/
-    ├── resource-group/
-    ├── networking/
-    ├── network-security-group/
-    ├── network-interface/
-    ├── virtual-machine/
-    ├── storage-account/
-    ├── storage-container/
-    └── rbac/
+
+│   ├── resource-group/
+    
+│   ├── networking/
+    
+│   ├── network-security-group/
+    
+│   ├── network-interface/
+    
+│   ├── virtual-machine/
+    
+│   ├── storage-account/
+    
+│   ├── storage-container/
+    
+│   └── rbac/
 
 
 **GitHub Actions y OIDC**

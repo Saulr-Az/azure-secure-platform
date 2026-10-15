@@ -4,7 +4,7 @@ Infraestructura montada en Terraform  con una arquitectura modular, controles ba
 
 Estado del projecto
 
-**EN PROGRESO**
+**COMPLETO**
 
 Construyendo la plataforma incrementalmente usando Terraform y Azure.
 

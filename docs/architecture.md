@@ -68,4 +68,4 @@ azure-secure-platform/
 
 environments/dev define el entorno de desarollo e implementa los valorees de la configuracion para poder reutilizarse
 
-modules contiene  todas las deficiniones del recursoo por cada componente del proyecto. 
+modules contiene  todas las deficiniones del recursos por cada componente del proyecto. 

@@ -66,6 +66,6 @@ azure-secure-platform/
 └── README.md
 
 
-environments/dev define el entorno de desarollo e implementa los valorees de la configuracion para poder reutilizarse
+environments/dev define el entorno de desarollo e implementa los valores de la configuracion para poder reutilizarse
 
 modules contiene  todas las deficiniones del recursos por cada componente del proyecto. 

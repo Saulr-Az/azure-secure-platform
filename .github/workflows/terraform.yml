@@ -43,12 +43,13 @@ jobs:
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           ARM_USE_OIDC: "true"
-#Le indicamos el directorio donde esta el terraform hay que ponerlo en cada paso
+#Le indicamos el directorio donde se aplicara la orden
         working-directory: terraform/environments/dev
         run: terraform init
 
       - name: Terraform Format
-        working-directory: terraform/environments/dev
+#Aqui le indicaremos que revise el formato de todos los archivos dentro de terraform 
+        working-directory: terraform
         run: terraform fmt -check -recursive
 
       - name: Terraform Validate

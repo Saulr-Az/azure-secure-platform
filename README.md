@@ -4,8 +4,8 @@ Infraestructura montada en Terraform  con una arquitectura modular, controles ba
 
 Estado del projecto
 
-**COMPLETO**
-Versión inicial implementada; mejoras de seguridad y automatización previstas.
+**Version funcional completada**
+**PENDIENTE:** mejoras de seguridad y automatización previstas.
 
 Construyendo la plataforma incrementalmente usando Terraform y Azure.
 
@@ -161,7 +161,7 @@ terraform/
 
 **GitHub Actions y OIDC**
 
-Localizado en .github/actions
+Localizado en .github/workflows
 
 El workflow automatiza las validaciones de Terraform y ejecuta terraform plan  para comprovar los eventos configurados del repositorio.
 

@@ -5,6 +5,7 @@ Infraestructura montada en Terraform  con una arquitectura modular, controles ba
 Estado del projecto
 
 **COMPLETO**
+Versión inicial implementada; mejoras de seguridad y automatización previstas.
 
 Construyendo la plataforma incrementalmente usando Terraform y Azure.
 

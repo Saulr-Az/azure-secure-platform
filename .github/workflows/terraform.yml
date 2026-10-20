@@ -56,6 +56,15 @@ jobs:
         working-directory: terraform/environments/dev
         run: terraform validate
 
+#Revisaremos con CHeckov si hay algun fallo de seguridad en el NSG, Storage Account o VM     
+      - name: Checkov Security Scan
+        uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: terraform
+          framework: terraform
+          soft_fail: true
+
+#Finalmente lanzaremos el plan para confirmar que la infraestructura planeada se puede crear correctamente
       - name: Terraform Plan
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}

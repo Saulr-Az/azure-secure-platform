@@ -8,9 +8,9 @@ resource "azurerm_storage_account" "this" {
   allow_nested_items_to_be_public = false
   https_traffic_only_enabled      = true
 
-#Para mejorar la seguridad del equipo vamos añadir retenciones de blob y del contendedor en caso que se borren por accidente un archivo o contendedor
+  #Para mejorar la seguridad del equipo vamos añadir retenciones de blob y del contendedor en caso que se borren por accidente un archivo o contendedor
 
-    blob_properties {
+  blob_properties {
     delete_retention_policy {
       days = 7
     }
@@ -19,7 +19,7 @@ resource "azurerm_storage_account" "this" {
       days = 7
     }
   }
-  tags                            = var.tags
+  tags = var.tags
 
 }
 

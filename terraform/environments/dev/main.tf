@@ -131,3 +131,18 @@ module "rbac" {
   scope        = module.storage_container.storage_container_id
   principal_id = module.virtual_machine.identity_id_vm
 }
+
+#Modulo de Log Analytics Workspace
+
+module "log_analytics" {
+  source = "../../modules/log-analytics"
+
+  name                = "${var.project_name}-${var.environment}--LogAnalytics"
+  location            = var.location
+  resource_group_name = module.resource_group.name
+  retention_in_days   = 30
+  tags                = local.common_tags
+
+
+
+}

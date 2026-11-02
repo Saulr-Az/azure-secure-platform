@@ -143,6 +143,17 @@ module "log_analytics" {
   retention_in_days   = 30
   tags                = local.common_tags
 
+}
+
+#Modulo del Monitor DCR
+module "monitor-dcr" {
+  source = "../../modules/monitor-dcr"
+
+  name                       = "${var.project_name}-${var.environment}--MonitorDcr"
+  location                   = var.location
+  resource_group_name        = module.resource_group.name
+  tags                       = local.common_tags
+  log_analytics_workspace_id = module.log_analytics.log_analytics_id
 
 
 }

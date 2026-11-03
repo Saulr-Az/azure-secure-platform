@@ -1,3 +1,4 @@
+#Variables del monitordcr
 variable "name" {
   description = "nombre del DRC"
   type        = string
@@ -27,3 +28,5 @@ variable "tags" {
   type        = map(string)
 
 }
+
+

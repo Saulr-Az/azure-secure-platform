@@ -7,6 +7,7 @@ locals {
     purpose     = "portfolio"
   }
 }
+
 #MODULO GRUPO DE RECURSOS
 module "resource_group" {
   #Coje la informacion dentro de la siguiente dirrecion 
@@ -154,6 +155,27 @@ module "monitor-dcr" {
   resource_group_name        = module.resource_group.name
   tags                       = local.common_tags
   log_analytics_workspace_id = module.log_analytics.log_analytics_id
+
+}
+
+#Recurso de asignacion del Monitor DCR con la VM
+resource "azurerm_monitor_data_collection_rule_association" "this" {
+  name                    = "${var.project_name}-${var.environment}-dcr-association"
+  target_resource_id      = module.virtual_machine.virtual_machine_id
+  data_collection_rule_id = module.monitor-dcr.dcr_id
+}
+
+
+
+#Modulo del Monitor Agent
+module "monitor-agent" {
+  source = "../../modules/monitor-agent"
+
+  name                 = "${var.project_name}-${var.environment}--MonitorAgent"
+  virtual_machine_id   = module.virtual_machine.virtual_machine_id
+  publisher            = "Microsoft.Azure.Monitor"
+  type                 = "AzureMonitorWindowsAgent"
+  type_handler_version = 1.2
 
 
 }

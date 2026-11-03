@@ -36,7 +36,7 @@ resource "azurerm_monitor_data_collection_rule" "this" {
     streams      = ["Microsoft-Event"]
     destinations = ["log-analytics-destination"]
   }
-
 }
+
 
 

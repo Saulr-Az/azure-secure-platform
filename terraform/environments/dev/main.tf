@@ -8,6 +8,16 @@ locals {
   }
 }
 
+#Modulo aleatorio para dar un valor al azar y aplicarlo al nombre del storage_account
+resource "random_string" "storage_suffix" {
+  length  = 5
+  upper   = false
+  lower   = true
+  numeric = true
+  special = false
+}
+
+
 #MODULO GRUPO DE RECURSOS
 module "resource_group" {
   #Coje la informacion dentro de la siguiente dirrecion 
@@ -103,7 +113,7 @@ module "virtual_machine" {
 module "storage_account" {
   source = "../../modules/storage-account"
 
-  name                     = "azportfoliost01saulr"
+  name                     = "azportfoliost${random_string.storage_suffix.result}"
   location                 = var.location
   resource_group_name      = module.resource_group.name
   account_tier             = var.account_tier
@@ -150,7 +160,7 @@ module "log_analytics" {
 module "monitor-dcr" {
   source = "../../modules/monitor-dcr"
 
-  name                       = "${var.project_name}-${var.environment}--MonitorDcr"
+  name                       = "${var.project_name}-${var.environment}-monitordcr"
   location                   = var.location
   resource_group_name        = module.resource_group.name
   tags                       = local.common_tags
@@ -171,7 +181,7 @@ resource "azurerm_monitor_data_collection_rule_association" "this" {
 module "monitor-agent" {
   source = "../../modules/monitor-agent"
 
-  name                 = "${var.project_name}-${var.environment}--MonitorAgent"
+  name                 = "${var.project_name}-${var.environment}--monitoragent"
   virtual_machine_id   = module.virtual_machine.virtual_machine_id
   publisher            = "Microsoft.Azure.Monitor"
   type                 = "AzureMonitorWindowsAgent"

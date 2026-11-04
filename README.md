@@ -16,6 +16,7 @@ Architectura Terraform
 Identidad y RBAC
 Automatizacion de la Arquitectura
 Implementacion con Github
+Monitorizacion a traves de Azure Monitor
 
 
 
@@ -55,8 +56,16 @@ Asignacion de permissos controlada en Blob Storage
 
 Asignado permiso Blob Storage Container 
 
+**MONITOR**
+Log analytics
+
+dcr
+
+Azure Monitor Extension
 
 ****NETWORKING****
+
+
 
 ****Resource Group****
 
@@ -112,11 +121,11 @@ La contraseña de admin la solicitara por teclado cuadno se ejecute.
 
 Asignado el rol Storage Data Reader en la VM para luego poder acceder a los blobs del data storage que crearemos.
 
-****STORAGE**
+****STORAGE****
 
 ****Azure Storage Account****
 
-Debido a que debe tener un nombre unico le tuve que llamar azportfoliost01saulr ya que el procedimiento que seguia con el resto de recursos esos nombres ya estaban usados...
+Creamos una variable aleatoria para que no de problemas cada vez que creamos una cuenta de almacenamiento nueva. 
 Configurado con TLS 1.2, contiene un contenedor Blob
 
 **Blob Storage Container**
@@ -126,7 +135,16 @@ Lo nombre container01, he subido un blob para realizar una prueba que esta adjun
 **Permisos de acceso mediante Azure RBAC**
 A traves de RBAC le indicamos que la azportfolio-vm tiene el rol de Storage Blob Data Reader en container01
 
+****MONITOR****
+Implementado un log-analitcs,el DCR que define lo que se recopilara, y la extension de azure monitor aplicada en la vm. 
 
+**Log analitics**
+Consultara los datos recopilados por el DCR.
+**dcr**
+Recopila los eventos de Microsoft events, de las categorias Sistema y Aplicacion de los niveles 1,2 y 3.
+
+**Azure Monitor Extension**
+La extension se ha aplicado en la vm del proyecto, recopilara los datos para poder revisarlos a traves de log analytics
 
 ****ESTRUCTURA PRINCIPAL****
 
@@ -142,21 +160,27 @@ terraform/
 
 └── modules/
 
-│   ├── resource-group/
+│   ├── log-analytics/
+
+│   ├── monitor-agent
+
+│   ├── monitor-dcr
+    
+│   ├──  network-interface/
+    
+│   ├── network-security-group/ 
     
 │   ├── networking/
+
+│   ├── rbac/
     
-│   ├── network-security-group/
-    
-│   ├── network-interface/
-    
-│   ├── virtual-machine/
+│   ├── resource-group/
     
 │   ├── storage-account/
     
 │   ├── storage-container/
     
-│   └── rbac/
+│   └── virtual-machine/
 
 
 **GitHub Actions y OIDC**
@@ -203,6 +227,7 @@ Azure Storage DONE
 
 Managed Identity DONE
 
+Azure Monitor DONE
 RBAC DONE
 
 GitHub Actions CI/CD DONE

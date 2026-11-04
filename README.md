@@ -57,6 +57,7 @@ Asignacion de permissos controlada en Blob Storage
 Asignado permiso Blob Storage Container 
 
 **MONITOR**
+
 Log analytics
 
 dcr

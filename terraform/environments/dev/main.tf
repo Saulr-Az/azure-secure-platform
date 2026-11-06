@@ -156,6 +156,18 @@ module "log_analytics" {
 
 }
 
+#Recurso time para que monitor dcr espere y no se cree antes del log_analytics
+resource "time_sleep" "wait_for_log_analytics" {
+  depends_on = [module.log_analytics]
+
+  create_duration = "30s"
+
+  triggers = {
+    workspace_id = module.log_analytics.log_analytics_id
+  }
+}
+
+
 #Modulo del Monitor DCR
 module "monitor-dcr" {
   source = "../../modules/monitor-dcr"
@@ -165,6 +177,7 @@ module "monitor-dcr" {
   resource_group_name        = module.resource_group.name
   tags                       = local.common_tags
   log_analytics_workspace_id = module.log_analytics.log_analytics_id
+  depends_on = [time_sleep.wait_for_log_analytics]
 
 }
 

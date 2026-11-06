@@ -6,7 +6,9 @@ Infraestructura montada en Terraform  con una arquitectura modular, controles ba
 **PREREQUISITOS ANTES DE CREAR**
 
 PARA PODER IMPLEMENTAR EL BACKEND:
-Se debe lanzar primero el bootstrap, luego recoger el output con el nombre que te dará de StorageAccount y ponerlo en name "storage_account_name"
+
+Se debe lanzar primero el bootstrap,
+despues recoger el output con el nombre que te dará de StorageAccount y ponerlo en name "storage_account_name"
 
 Luego el usuario que ejecute el main.tf de environments, debe tener asignado el rol de Storage Blob Data Contributor en la cuenta de almacenamiento creada por bootstrap. 
 

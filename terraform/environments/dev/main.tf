@@ -177,7 +177,7 @@ module "monitor-dcr" {
   resource_group_name        = module.resource_group.name
   tags                       = local.common_tags
   log_analytics_workspace_id = module.log_analytics.log_analytics_id
-  depends_on = [time_sleep.wait_for_log_analytics]
+  depends_on                 = [time_sleep.wait_for_log_analytics]
 
 }
 

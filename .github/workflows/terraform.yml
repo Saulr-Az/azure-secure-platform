@@ -45,7 +45,7 @@ jobs:
           ARM_USE_OIDC: "true"
 #Le indicamos el directorio donde se aplicara la orden
         working-directory: terraform/environments/dev
-        run: terraform init
+        run: terraform init -backend-config="dev.backend.github.hcl"
 
       - name: Terraform Format
 #Aqui le indicaremos que revise el formato de todos los archivos dentro de terraform 

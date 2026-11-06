@@ -9,7 +9,7 @@ terraform {
     }
     time = {
       source = "hashicorp/time"
-}
+    }
     random = {
       source = "hashicorp/random"
     }

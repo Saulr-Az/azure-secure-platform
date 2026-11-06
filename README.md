@@ -2,6 +2,17 @@
 
 Infraestructura montada en Terraform  con una arquitectura modular, controles basados en identidad y test de validacion a traves de Github Actions
 
+
+**PREREQUISITOS ANTES DE CREAR**
+
+PARA PODER IMPLEMENTAR EL BACKEND:
+Se debe lanzar primero el bootstrap, luego recoger el output con el nombre que te dará de StorageAccount y ponerlo en name "storage_account_name"
+
+Luego el usuario que ejecute el main.tf de environments, debe tener asignado el rol de Storage Blob Data Contributor en la cuenta de almacenamiento creada por bootstrap. 
+
+
+
+
 Estado del projecto
 
 **Version funcional completada**
@@ -17,7 +28,7 @@ Identidad y RBAC
 Automatizacion de la Arquitectura
 Implementacion con Github
 Monitorizacion a traves de Azure Monitor
-
+Backend Remoto
 
 
 **Arquitectura implementada**
@@ -63,6 +74,9 @@ Log analytics
 dcr
 
 Azure Monitor Extension
+
+**BACKEND REMOTO**
+
 
 ****NETWORKING****
 
@@ -143,6 +157,7 @@ Implementado un log-analitcs,el DCR que define lo que se recopilara, y la extens
 Consultara los datos recopilados por el DCR.
 **dcr**
 Recopila los eventos de Microsoft events, de las categorias Sistema y Aplicacion de los niveles 1,2 y 3.
+Se ha aplicado un retraso de 30 segundos al crearse para que no se cree antes de Log Analitics y de error.
 
 **Azure Monitor Extension**
 La extension se ha aplicado en la vm del proyecto, recopilara los datos para poder revisarlos a traves de log analytics

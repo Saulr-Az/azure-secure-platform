@@ -5,12 +5,31 @@ Infraestructura montada en Terraform  con una arquitectura modular, controles ba
 
 **PREREQUISITOS ANTES DE CREAR**
 
-PARA PODER IMPLEMENTAR EL BACKEND:
+Para poder autenticarte en los github Actions:
+Crear los secretos en github dandole los siguientes valores:
+
+**AZURE_CLIENT_ID:** 
+
+El ID de tu app registrada en tu Microsoft Entra ID
+
+**AZURE_TENANT_ID:**
+
+ID de tu tenant de Azure
+
+**AZURE_SUSCRIPTION_ID** 
+
+ID de tu suscripcion de Azure donde se desplegaran los recursos.
+
+
+
+**PARA PODER IMPLEMENTAR EL BACKEND:**
 
 Se debe lanzar primero el bootstrap,
 despues recoger el output con el nombre que te dará de StorageAccount y ponerlo en "storage_account_name" azure-secure-platform/terraform/environments/dev/dev.backend.hcl
 
 Luego el usuario que ejecute el main.tf de environments, debe tener asignado el rol de Storage Blob Data Contributor en la cuenta de almacenamiento creada por bootstrap. 
+
+Github debe tener permissos de Storage Blob Data Contributor para poder acceder al backend remoto. 
 
 
 

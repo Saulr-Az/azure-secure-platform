@@ -6,6 +6,7 @@ output "storage_account_name" {
 
 }
 
+#Sacamos el nombre del contenedor
 output "storage_container_name" {
   description = "Nombre del contenedor"
   value       = azurerm_storage_container.state.name

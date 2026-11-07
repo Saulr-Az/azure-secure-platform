@@ -169,7 +169,7 @@ resource "time_sleep" "wait_for_log_analytics" {
 
 
 #Modulo del Monitor DCR
-module "monitor-dcr" {
+module "monitor_dcr" {
   source = "../../modules/monitor-dcr"
 
   name                       = "${var.project_name}-${var.environment}-monitordcr"
@@ -185,13 +185,13 @@ module "monitor-dcr" {
 resource "azurerm_monitor_data_collection_rule_association" "this" {
   name                    = "${var.project_name}-${var.environment}-dcr-association"
   target_resource_id      = module.virtual_machine.virtual_machine_id
-  data_collection_rule_id = module.monitor-dcr.dcr_id
+  data_collection_rule_id = module.monitor_dcr.dcr_id
 }
 
 
 
 #Modulo del Monitor Agent
-module "monitor-agent" {
+module "monitor_agent" {
   source = "../../modules/monitor-agent"
 
   name                 = "${var.project_name}-${var.environment}--monitoragent"
@@ -200,5 +200,16 @@ module "monitor-agent" {
   type                 = "AzureMonitorWindowsAgent"
   type_handler_version = 1.2
 
+
+}
+
+#Modulo del Azure Key Vault
+module "key_vault" {
+  source = "../../modules/key-vault"
+
+  name                = "${var.project_name}-${var.environment}-keyV"
+  location            = var.location
+  resource_group_name = module.resource_group.name
+  tags                = local.common_tags
 
 }

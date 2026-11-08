@@ -6,6 +6,9 @@ locals {
     managed_by  = "terraform"
     purpose     = "portfolio"
   }
+  security_tags = {
+    security = var.security
+  }
 }
 
 #Modulo aleatorio para dar un valor al azar y aplicarlo al nombre del storage_account
@@ -18,16 +21,29 @@ resource "random_string" "storage_suffix" {
 }
 
 
-#MODULO GRUPO DE RECURSOS
+#MODULO GRUPO DE RECURSOS DE Desarrollo
 module "resource_group" {
   #Coje la informacion dentro de la siguiente dirrecion 
   source = "../../modules/resource-group"
 
   name     = "${var.project_name}-${var.environment}-rg"
   location = var.location
-
-  tags = local.common_tags
+  tags     = local.common_tags
 }
+
+#MODULO GRUPO DE RECURSOS DE SEGURIDAD
+module "security_resource_group" {
+  #Coje la informacion dentro de la siguiente dirrecion 
+  source = "../../modules/resource-group"
+
+  name     = "${var.project_name}-${var.security}-rg"
+  location = var.location
+  tags     = merge(local.common_tags, local.security_tags)
+}
+
+
+
+
 
 #MODULO NETWORKING VNET Y SUBNETS
 module "networking" {
@@ -207,9 +223,9 @@ module "monitor_agent" {
 module "key_vault" {
   source = "../../modules/key-vault"
 
-  name                = "${var.project_name}-${var.environment}-keyV"
+  name                = "azp-${var.security}-keyv"
   location            = var.location
-  resource_group_name = module.resource_group.name
+  resource_group_name = module.security_resource_group.name
   tags                = local.common_tags
 
 }

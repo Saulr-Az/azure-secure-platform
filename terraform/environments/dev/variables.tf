@@ -14,6 +14,12 @@ variable "environment" {
   default     = "dev"
 }
 
+variable "security" {
+  description = "Deployment environment"
+  type        = string
+  default     = "security"
+}
+
 
 variable "project_name" {
   description = "Project name"

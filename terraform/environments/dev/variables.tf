@@ -35,11 +35,6 @@ variable "priority" {
 
 }
 
-variable "admin_password" {
-  description = "Contraseña del admin"
-  type        = string
-  sensitive   = true
-}
 
 variable "account_tier" {
   description = "Tier de la cuenta "

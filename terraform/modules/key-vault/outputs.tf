@@ -1,5 +1,5 @@
 #Outputs para sacar nombre y el id del Azure Key Vault
-output "key_vault_ids" {
+output "key_vault_id" {
   description = "Identificador del Azure Key Vault"
   value       = azurerm_key_vault.this.id
 }

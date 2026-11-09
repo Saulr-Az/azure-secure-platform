@@ -4,9 +4,12 @@ variable "scope" {
 }
 
 
-
 variable "principal_id" {
   description = "Identificador de la identidad que tendra los permissos para acceder al scope"
   type        = string
 }
 
+variable "role_definition_name" {
+  description = "Rol de Azure que se asignará"
+  type        = string
+}

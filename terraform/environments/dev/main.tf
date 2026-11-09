@@ -118,7 +118,7 @@ module "virtual_machine" {
   tags                  = local.common_tags
   size                  = "Standard_D2s_v3"
   admin_username        = "AzureSr"
-  admin_password        = var.admin_password
+  admin_password        = data.azurerm_key_vault_secret.vm_admin_password.value
   network_interface_ids = module.network_interface.network_interface_ids
 
 
@@ -151,13 +151,30 @@ module "storage_container" {
 
 }
 
+#MODULOS ASIGNACIONES
+
 #Modulo de asignacion de la identidad
 
 module "rbac" {
-  source       = "../../modules/rbac"
-  scope        = module.storage_container.storage_container_id
-  principal_id = module.virtual_machine.identity_id_vm
+  source               = "../../modules/rbac"
+  scope                = module.storage_container.storage_container_id
+  principal_id         = module.virtual_machine.identity_id_vm
+  role_definition_name = "Storage Blob Data Reader"
 }
+
+#Modulo de asignacion de rbac para darle permissos al usuario para que pueda gestionar los secretos
+module "rbac_keyvault_technician" {
+  source = "../../modules/rbac"
+
+  scope                = module.key_vault.key_vault_id
+  principal_id         = data.azurerm_client_config.current.object_id
+  role_definition_name = "Key Vault Secrets Officer"
+
+}
+
+
+
+
 
 #Modulo de Log Analytics Workspace
 
@@ -227,5 +244,5 @@ module "key_vault" {
   location            = var.location
   resource_group_name = module.security_resource_group.name
   tags                = local.common_tags
-
+  tenant_id           = data.azurerm_client_config.current.tenant_id
 }

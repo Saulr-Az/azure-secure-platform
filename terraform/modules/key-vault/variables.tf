@@ -21,3 +21,8 @@ variable "tags" {
   type        = map(string)
 
 }
+
+variable "tenant_id" {
+  description = "Tenant ID de Microsoft Entra ID"
+  type        = string
+}

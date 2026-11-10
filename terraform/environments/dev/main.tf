@@ -6,7 +6,7 @@ locals {
     managed_by  = "terraform"
     purpose     = "portfolio"
   }
- }
+}
 
 #Modulo aleatorio para dar un valor al azar y aplicarlo al nombre del storage_account
 resource "random_string" "storage_suffix" {
@@ -144,20 +144,6 @@ module "rbac" {
   principal_id         = module.virtual_machine.identity_id_vm
   role_definition_name = "Storage Blob Data Reader"
 }
-
-#Modulo de asignacion de rbac para darle permissos al usuario para que pueda gestionar los secretos
-module "rbac_keyvault_technician" {
-  source = "../../modules/rbac"
-
-  scope                = module.key_vault.key_vault_id
-  principal_id         = data.azurerm_client_config.current.object_id
-  role_definition_name = "Key Vault Secrets Officer"
-
-}
-
-
-
-
 
 #Modulo de Log Analytics Workspace
 

@@ -1,4 +1,4 @@
-#Indicamos variables que utilizaremos en el main.tf de environments.Usaremos default para que coja valores por defecto
+#Indicamos variables que utilizaremos en el main.tf de.Usaremos default para que coja valores por defecto
 
 
 variable "location" {

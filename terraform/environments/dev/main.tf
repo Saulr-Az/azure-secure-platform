@@ -6,10 +6,7 @@ locals {
     managed_by  = "terraform"
     purpose     = "portfolio"
   }
-  security_tags = {
-    security = var.security
-  }
-}
+ }
 
 #Modulo aleatorio para dar un valor al azar y aplicarlo al nombre del storage_account
 resource "random_string" "storage_suffix" {
@@ -30,20 +27,6 @@ module "resource_group" {
   location = var.location
   tags     = local.common_tags
 }
-
-#MODULO GRUPO DE RECURSOS DE SEGURIDAD
-module "security_resource_group" {
-  #Coje la informacion dentro de la siguiente dirrecion 
-  source = "../../modules/resource-group"
-
-  name     = "${var.project_name}-${var.security}-rg"
-  location = var.location
-  tags     = merge(local.common_tags, local.security_tags)
-}
-
-
-
-
 
 #MODULO NETWORKING VNET Y SUBNETS
 module "networking" {
@@ -234,15 +217,4 @@ module "monitor_agent" {
   type_handler_version = 1.2
 
 
-}
-
-#Modulo del Azure Key Vault
-module "key_vault" {
-  source = "../../modules/key-vault"
-
-  name                = "azp-${var.security}-keyv"
-  location            = var.location
-  resource_group_name = module.security_resource_group.name
-  tags                = local.common_tags
-  tenant_id           = data.azurerm_client_config.current.tenant_id
 }

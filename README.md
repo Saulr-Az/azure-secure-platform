@@ -2,6 +2,14 @@
 
 Infraestructura montada en Terraform  con una arquitectura modular, controles basados en identidad y test de validacion a traves de Github Actions
 
+**Entornos y comunicacion entre ellos**
+
+Cada entorno dispone de su propio estado remoto guardado en Azure Storage:
+  •	security.terraform.tfstate
+  •	dev.terraform.tfstate
+  •	prod.terraform.tfstate (para mas adelante)
+El entorno dev recoje la información de  los outputs publicados por security, así evitamos  duplicar recursos o gestiones rbac.
+
 
 **PREREQUISITOS ANTES DE CREAR**
 
@@ -27,7 +35,7 @@ ID de tu suscripcion de Azure donde se desplegaran los recursos.
 Se debe lanzar primero el bootstrap,
 despues recoger el output con el nombre que te dará de StorageAccount y ponerlo en "storage_account_name" azure-secure-platform/terraform/environments/dev/dev.backend.hcl
 
-Luego el usuario que ejecute el main.tf de environments, debe tener asignado el rol de Storage Blob Data Contributor en la cuenta de almacenamiento creada por bootstrap. 
+Luego el usuario que ejecute el main.tf de dev, debe tener asignado el rol de Storage Blob Data Contributor en la cuenta de almacenamiento creada por bootstrap. 
 
 Github debe tener permissos de Storage Blob Data Contributor para poder acceder al backend remoto. 
 
@@ -37,11 +45,14 @@ Github debe tener permissos de Storage Blob Data Contributor para poder acceder 
 Estado del projecto
 
 **Version funcional completada**
-**PENDIENTE:** mejoras de seguridad y automatización previstas.
+**PENDIENTE:** 
+-Kubernetes
+-Ansible
+-Implementar Diagrama de toda la arquitectura
 
-Construyendo la plataforma incrementalmente usando Terraform y Azure.
 
-**Objetivos a demostrar:**
+
+**Acciones demostradas:**
 
 Creacion y Configuracion de recursos
 Architectura Terraform
@@ -49,8 +60,8 @@ Identidad y RBAC
 Automatizacion de la Arquitectura
 Implementacion con Github
 Monitorizacion a traves de Azure Monitor
-Backend Remoto
-
+Backend Remoto y Azure Storage para almacenarlos
+Implementacion de Key Vault y contener secretos
 
 **Arquitectura implementada**
 

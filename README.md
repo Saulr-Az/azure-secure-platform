@@ -32,11 +32,17 @@ ID de tu suscripcion de Azure donde se desplegaran los recursos.
 
 **PARA PODER IMPLEMENTAR EL BACKEND:**
 
-Se debe lanzar primero el bootstrap,
-despues recoger el output con el nombre que te dará de StorageAccount y ponerlo en "storage_account_name" azure-secure-platform/terraform/environments/dev/dev.backend.hcl
+1.Se debe lanzar primero el bootstrap,
 
-Luego el usuario que ejecute el main.tf de dev, debe tener asignado el rol de Storage Blob Data Contributor en la cuenta de almacenamiento creada por bootstrap. 
+2.Despues recoger el output con el nombre que te dará de StorageAccount y ponerlo en "storage_account_name" azure-secure-platform/terraform/environments/dev/dev.backend.hcl y de azure-secure-platform/terraform/environments/security/security.backend.hcl
 
+3. Desplegar el Entorno de security.
+
+4. Luego dentro del grupo que hemos  creado  con el entorno de seguridad (azportfolio-security-rg), entramos al Key vault azp-security-keyv y creamos el secreto vm1-admin-password
+  
+5.Luego el usuario que despliegue el entorno de  dev, debe tener asignado el rol de Storage Blob Data Contributor en la cuenta de almacenamiento creada por bootstrap. 
+
+**TENER EN CUENTA**
 Github debe tener permissos de Storage Blob Data Contributor para poder acceder al backend remoto. 
 
 

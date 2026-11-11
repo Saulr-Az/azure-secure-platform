@@ -35,7 +35,11 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
-
+      
+      - name: Terraform Format
+#Aqui le indicaremos que revise el formato de todos los archivos dentro de terraform 
+        working-directory: terraform
+        run: terraform fmt -recursive
 #Ejecuta las comprovaciones de Terraform y generara el plan
       - name: Terraform Init
         env:
@@ -45,12 +49,8 @@ jobs:
           ARM_USE_OIDC: "true"
 #Le indicamos el directorio donde se aplicara la orden
         working-directory: terraform/environments/dev
-        run: terraform init -backend-config="dev.backend.github.hcl"
+        run: terraform init -input=false -backend-config="dev.backend.github.hcl"
 
-      - name: Terraform Format
-#Aqui le indicaremos que revise el formato de todos los archivos dentro de terraform 
-        working-directory: terraform
-        run: terraform fmt -recursive
 
       - name: Terraform Validate
         working-directory: terraform/environments/dev
@@ -73,5 +73,4 @@ jobs:
           TF_VAR_admin_password: ${{ secrets.TF_VAR_admin_password }}
 
           ARM_USE_OIDC: "true"
-        working-directory: terraform/environments/dev
         run: terraform plan

@@ -42,3 +42,12 @@ module "rbac_keyvault_technician" {
   principal_id         = data.azurerm_client_config.current.object_id
   role_definition_name = "Key Vault Secrets User"
 }
+
+#Asignacion de permisos  para github
+module "rbac_keyvault_technician" {
+  source = "../../modules/rbac"
+
+  scope                = module.key_vault.key_vault_id
+  principal_id         = "8612ca5b-1c86-465a-a882-f5a261b462b7"
+  role_definition_name = "Key Vault Secrets User"
+}

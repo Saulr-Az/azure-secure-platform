@@ -30,9 +30,9 @@ ID de tu suscripcion de Azure donde se desplegaran los recursos.
 
 
 
-**PARA PODER IMPLEMENTAR EL BACKEND:**
+**DENTRO DEL TENANT:**
 
-1.Se debe lanzar primero el bootstrap,
+1.Se debe lanzar primero el bootstrap.
 
 2.Despues recoger el output con el nombre que te dará de StorageAccount y ponerlo en "storage_account_name" azure-secure-platform/terraform/environments/dev/dev.backend.hcl y de azure-secure-platform/terraform/environments/security/security.backend.hcl
 
@@ -168,7 +168,7 @@ azportfolio-dev-nic esta asignado a la vm project-vm
 
 La maquina virtual le tuve que poner azportfolio-vm ya que no me dejaba añadirle "dev" al nombre...
 el tamañp que usaremos es: Standard_D2s_v3 debido que en la region que estamos trabajando cuando he realizado las pruebas no estaban disponibles modelos mas asequibles a un windows Server.
-La contraseña de admin la solicitara por teclado cuadno se ejecute.
+La contraseña de admin esta guardada en el Key vault azp-security-keyv
 
 ****Managed Identity****
 

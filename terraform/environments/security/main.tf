@@ -43,11 +43,11 @@ module "rbac_keyvault_technician" {
   role_definition_name = "Key Vault Secrets User"
 }
 
-#Asignacion de permisos  para github
-module "rbac_keyvault_technician" {
+#Asignacion de permisos para github
+module "rbac_github_technician" {
   source = "../../modules/rbac"
 
   scope                = module.key_vault.key_vault_id
-  principal_id         = "dcc7412d-f6e7-4fc4-9bbc-a8b858bce36d"
+  principal_id         = "8612ca5b-1c86-465a-a882-f5a261b462b7"
   role_definition_name = "Key Vault Secrets User"
 }

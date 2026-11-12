@@ -43,7 +43,7 @@ module "rbac_keyvault_technician" {
   role_definition_name = "Key Vault Secrets User"
 }
 
-#Asignacion de permisos para github
+#Asignacion de permisos para github para que pueda ver los secretos
 module "rbac_github_technician" {
   source = "../../modules/rbac"
 
